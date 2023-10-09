@@ -10,10 +10,16 @@ namespace MyWebApplication.Controllers
         {
             return View();
         }
-
+        public ActionResult Users()
+        {
+            UserManager um = new UserManager();
+            UserModels user = um.GetAllUsers();
+            return View(user);
+        }
         [HttpPost]
         public ActionResult SignUp(UserModel user)
         {
+            ModelState.Remove("AcountImage");
             if (ModelState.IsValid)
             {
                 UserManager um = new UserManager();
@@ -27,6 +33,18 @@ namespace MyWebApplication.Controllers
                     ModelState.AddModelError("", "Login Name already taken.");
             }
             return View();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update([FromBody] UserModel userData)
+        {
+            UserManager um = new UserManager();
+            if (um.IsLoginNameExist(userData.LoginName))
+            {
+                um.UpdateUserAccount(userData);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("LoginNameNotFound");
         }
 
         [HttpGet]
