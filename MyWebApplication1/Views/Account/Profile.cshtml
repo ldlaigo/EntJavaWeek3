@@ -3,7 +3,7 @@
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Users List</h1>
+<h1>Self Profile</h1>
 <div id="userListContainer">
     <span class="alert-success">@ViewBag.Message</span>
     <table class="table table-striped table-condensed table-hover">
@@ -33,7 +33,7 @@
                     <td>@Html.DisplayFor(m => i.LastName)</td>
                     <td>@Html.DisplayFor(m => i.Gender)</td>
                     <td>@Html.DisplayFor(m => i.RoleName)</td>
-                    <td><a href="#" class="lnkEdit" data-userid="@i.UserID" data-login="@i.LoginName" data-firstname="@i.FirstName" data-lastname="@i.LastName" data-gender="@i.Gender" data-role="@i.RoleID">Edit</a></td>
+                    <td><a href="#" class="lnkEdit" data-userid="@i.UserID" data-login="@i.LoginName" data-firstname="@i.FirstName" data-password="@i.Password" data-lastname="@i.LastName" data-gender="@i.Gender" data-role="@i.RoleID">Edit</a></td>
                 </tr>
             }
         </tbody>
@@ -76,6 +76,13 @@
                         <input type="text" class="form-control" id="editLastName">
                     </div>
                     <div class="form-group">
+                        <label for="editRole">Role:</label>
+                        <select class="form-control" id="editRole" disabled>
+                            <option value="1">Administrator</option>
+                            <option value="2">Member</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="editGender">Gender:</label>
                         <select class="form-control" id="editGender">
                             <option value="M">Male</option>
@@ -84,11 +91,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="editRole">Role:</label>
-                        <select class="form-control" id="editRole">
-                            <option value="1">Administrator</option>
-                            <option value="2">Member</option>
-                        </select>
+                        <label for="editPassword">Password:</label>
+                        <input type="text" class="form-control" id="editPassword">
                     </div>
                 </form>
             </div>
@@ -112,6 +116,7 @@
         var editLastName = $("#editLastName");
         var editGender = $("#editGender");
         var editRole = $("#editRole");
+        var editPassword = $("#editPassword");
 
         // Click event for "Edit" links
         $("#userListContainer").on("click", ".lnkEdit", function () {
@@ -121,7 +126,7 @@
             var lastName = $(this).data("lastname");
             var gender = $(this).data("gender");
             var role = $(this).data("role");
-
+            var password = $(this).data("password");
             // Populate the modal with user data
             editId.val(userId);
             editLoginName.val(loginName);
@@ -129,7 +134,7 @@
             editLastName.val(lastName);
             editGender.val(gender);
             editRole.val(role);
-
+            editPassword.val(password);
             // Show the modal
             editModal.modal("show");
         });
@@ -142,6 +147,7 @@
                 LoginName: editLoginName.val(),
                 FirstName: editFirstName.val(),
                 LastName: editLastName.val(),
+                Password: editPassword.val(),
                 Gender: editGender.val(),
                 RoleID: editRole.val()
             };

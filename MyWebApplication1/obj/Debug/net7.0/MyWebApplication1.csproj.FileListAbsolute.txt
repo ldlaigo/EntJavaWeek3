@@ -73,3 +73,7 @@ C:\Users\Miori\source\repos\MyWebApplication1\MyWebApplication1\obj\Debug\net7.0
 C:\Users\Miori\source\repos\MyWebApplication1\MyWebApplication1\obj\Debug\net7.0\MyWebApplication1.pdb
 C:\Users\Miori\source\repos\MyWebApplication1\MyWebApplication1\obj\Debug\net7.0\MyWebApplication1.genruntimeconfig.cache
 C:\Users\Miori\source\repos\MyWebApplication1\MyWebApplication1\obj\Debug\net7.0\ref\MyWebApplication1.dll
+C:\Users\Miori\source\repos\MyWebApplication1\MyWebApplication1\bin\Debug\net7.0\Microsoft.Owin.dll
+C:\Users\Miori\source\repos\MyWebApplication1\MyWebApplication1\bin\Debug\net7.0\Microsoft.Owin.Security.dll
+C:\Users\Miori\source\repos\MyWebApplication1\MyWebApplication1\bin\Debug\net7.0\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Miori\source\repos\MyWebApplication1\MyWebApplication1\bin\Debug\net7.0\Owin.dll
